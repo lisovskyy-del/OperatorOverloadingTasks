@@ -1,10 +1,14 @@
-﻿using System.Numerics;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace MainProgram.JournalTask;
-class Journal
+namespace MainProgram.ShopTask;
+class Shop
 {
-    private int _date;
-    private int _amountOfWorkers;
+    private string? _name;
+    private string? _adress;
+    private string? _description;
+    private string? _phone;
+    private string? _email;
+    private int? _storeArea;
 
     private string? Name
     {
@@ -20,14 +24,14 @@ class Journal
         }
     }
 
-    private int? Date
+    private string? Adress
     {
         get;
         set
         {
-            if (value > 2025 || value <= 0)
+            if (value == null)
             {
-                throw new Exception("Date cannot be bigger than 2025 or less than 0!");
+                throw new Exception("Name cannot be empty.");
             }
 
             field = value;
@@ -76,7 +80,7 @@ class Journal
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw new Exception("Email can't be empty.");
-            }                
+            }
 
             if (value.Contains(" "))
             {
@@ -99,108 +103,109 @@ class Journal
         }
     }
 
-    private int? AmountOfWorkers
+    private int? StoreArea
     {
         get;
         set
         {
             if (value < 0)
             {
-                throw new Exception("Amount of workers cannot be negative.");
+                throw new Exception("Area of the store cannot be negative.");
             }
 
             field = value;
         }
     }
 
-    public Journal(string? name, int? date, string description, string? phone, string? email, int? amountOfWorkers)
+    public Shop(string? name, string? adress, string description, string? phone, string? email, int? storeArea)
     {
         Name = name;
-        Date = date;
+        Adress = adress;
         Description = description;
         Phone = phone;
         Email = email;
-        AmountOfWorkers = amountOfWorkers;
+        StoreArea = storeArea;
     }
 
-    public static Journal operator +(Journal journal, int value)
+    public static Shop operator +(Shop shop, int value)
     {
-        journal.AmountOfWorkers += value;
-        return journal;
+        shop.StoreArea += value;
+        return shop;
     }
 
-    public static Journal operator -(Journal journal, int value)
+    public static Shop operator -(Shop shop, int value)
     {
-        journal.AmountOfWorkers -= value;
-        return journal;
+        shop.StoreArea -= value;
+        return shop;
     }
 
-    public static bool operator ==(Journal? journal, Journal? other)
+    public static bool operator ==(Shop? shop, Shop? other)
     {
-        if (ReferenceEquals(journal, other))
+        if (ReferenceEquals(shop, other))
         {
             return true;
         }
-        if (journal is null || other is null)
+        if (shop is null || other is null)
         {
             return false;
         }
 
-        return journal.AmountOfWorkers == other.AmountOfWorkers;
+        return shop.StoreArea == shop.StoreArea;
     }
 
-    public static bool operator !=(Journal? journal, Journal? other)
+    public static bool operator !=(Shop? shop, Shop? other)
     {
-        return !(journal == other);
+        return !(shop == other);
     }
 
-    public bool Equals(Journal? other)
+    public bool Equals(Shop? other)
     {
         return this == other;
     }
 
     public override bool Equals(object? obj)
     {
-        return Equals(obj as Journal);
+        return Equals(obj as Shop);
     }
 
-    public static bool operator >(Journal? journal, Journal? other)
+
+    public static bool operator >(Shop? shop, Shop? other)
     {
-        if (ReferenceEquals(journal, other))
+        if (ReferenceEquals(shop, other))
         {
             return false;
         }
 
-        if (journal is null || other is null)
+        if (shop is null || other is null)
         {
             return false;
         }
 
-        return journal.AmountOfWorkers > other.AmountOfWorkers;
+        return shop.StoreArea > other.StoreArea;
     }
 
-    public static bool operator <(Journal? journal, Journal? other)
+    public static bool operator <(Shop? shop, Shop? other)
     {
-        if (ReferenceEquals(journal, other))
+        if (ReferenceEquals(shop, other))
         {
             return false;
         }
 
-        if (journal is null || other is null)
+        if (shop is null || other is null)
         {
             return false;
         }
 
-        return journal.AmountOfWorkers < other.AmountOfWorkers;
+        return shop.StoreArea < other.StoreArea;
     }
 
     public string Output()
     {
-        return $"Journal's name: {Name}\n" +
-            $"Journal's date: {Date}\n" +
-            $"Journal's description: {Description}\n" +
-            $"Journal's phone number: {Phone}\n" +
-            $"Journal's email: {Email}\n" +
-            $"Journal's amount of workers : {AmountOfWorkers}\n";
+        return $"Shop's name: {Name}\n" +
+            $"Shop's adress: {Adress}\n" +
+            $"Shop's description: {Description}\n" +
+            $"Shop's phone number: {Phone}\n" +
+            $"Shop's email: {Email}\n" +
+            $"Shop's store area: {StoreArea}\n";
     }
 }
