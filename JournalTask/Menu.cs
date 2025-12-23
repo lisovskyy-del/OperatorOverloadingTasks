@@ -62,283 +62,291 @@ class Menu
             Console.Write("Your choice: ");
             string? input = Console.ReadLine();
 
-            if (int.TryParse(input, out int userChoice))
+            try
             {
-                if (userChoice == 0)
+                if (int.TryParse(input, out int userChoice))
                 {
-                    Console.WriteLine("\nExitting..");
-                    break;
-                }
-                else if (userChoice == 1)
-                {
-                    journal = JournalInput();
+                    if (userChoice == 0)
+                    {
+                        Console.WriteLine("\nExitting..");
+                        break;
+                    }
+                    else if (userChoice == 1)
+                    {
+                        journal = JournalInput();
 
-                    if (journal != null)
-                    {
-                        Console.WriteLine("\nJournal created!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nWarning. Journal is empty. Some options may be locked.");
-                    }
-                }
-                else if (userChoice == 2)
-                {
-                    otherJournal = JournalInput();
-
-                    if (otherJournal != null)
-                    {
-                        Console.WriteLine("\nJournal created!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nWarning. Journal is empty. Some options may be locked.");
-                    }
-                }
-                else if (userChoice == 3)
-                {
-                    while (true)
-                    {
-                        Console.WriteLine("\n1. Add new workers to first journal");
-                        Console.WriteLine("2. Add new workers to the second journal");
-                        Console.WriteLine("0. Exit");
-                        Console.Write("Your choice: ");
-                        string? WorkersInput = Console.ReadLine();
-
-                        if (int.TryParse(WorkersInput, out int workersChoice))
+                        if (journal != null)
                         {
-                            if (workersChoice == 0)
-                            {
-                                Console.WriteLine("\nExitting..");
-                                break;
-                            }
-                            else if (workersChoice == 1)
-                            {
-                                int value = IntInput("Enter a number: ");
+                            Console.WriteLine("\nJournal created!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nWarning. Journal is empty. Some options may be locked.");
+                        }
+                    }
+                    else if (userChoice == 2)
+                    {
+                        otherJournal = JournalInput();
 
-                                if (journal != null && value > 0)
+                        if (otherJournal != null)
+                        {
+                            Console.WriteLine("\nJournal created!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nWarning. Journal is empty. Some options may be locked.");
+                        }
+                    }
+                    else if (userChoice == 3)
+                    {
+                        while (true)
+                        {
+                            Console.WriteLine("\n1. Add new workers to first journal");
+                            Console.WriteLine("2. Add new workers to the second journal");
+                            Console.WriteLine("0. Exit");
+                            Console.Write("Your choice: ");
+                            string? WorkersInput = Console.ReadLine();
+
+                            if (int.TryParse(WorkersInput, out int workersChoice))
+                            {
+                                if (workersChoice == 0)
                                 {
-                                    journal += value;
-                                    Console.WriteLine($"\nAdded {value} workers to first journal!");
+                                    Console.WriteLine("\nExitting..");
+                                    break;
+                                }
+                                else if (workersChoice == 1)
+                                {
+                                    int value = IntInput("Enter a number: ");
+
+                                    if (journal != null && value > 0)
+                                    {
+                                        journal += value;
+                                        Console.WriteLine($"\nAdded {value} workers to first journal!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nJournal is null or value is less than 0! Cannot add!");
+                                    }
+                                }
+                                else if (workersChoice == 2)
+                                {
+                                    int value = IntInput("Enter a number: ");
+
+                                    if (otherJournal != null && value > 0)
+                                    {
+                                        otherJournal += value;
+                                        Console.WriteLine($"\nAdded {value} workers to second journal!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nJournal is null or value is less than 0! Cannot add!");
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("\nJournal is null or value is less than 0! Cannot add!");
-                                }
-                            }
-                            else if (workersChoice == 2)
-                            {
-                                int value = IntInput("Enter a number: ");
-
-                                if (otherJournal != null && value > 0)
-                                {
-                                    otherJournal += value;
-                                    Console.WriteLine($"\nAdded {value} workers to second journal!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\nJournal is null or value is less than 0! Cannot add!");
+                                    Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
+                                Console.WriteLine("\nInvalid input! Enter a number!");
                             }
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nInvalid input! Enter a number!");
                         }
                     }
-                }
-                else if (userChoice == 4)
-                {
-                    while (true)
+                    else if (userChoice == 4)
                     {
-                        Console.WriteLine("\n1. Remove some workers from the first journal");
-                        Console.WriteLine("2. Remove some workers from the second journal");
-                        Console.WriteLine("0. Exit");
-                        Console.Write("Your choice: ");
-                        string? WorkersInput = Console.ReadLine();
-
-                        if (int.TryParse(WorkersInput, out int workersChoice))
+                        while (true)
                         {
-                            if (workersChoice == 0)
-                            {
-                                Console.WriteLine("\nExitting..");
-                                break;
-                            }
-                            else if (workersChoice == 1)
-                            {
-                                int value = IntInput("Enter a number: ");
+                            Console.WriteLine("\n1. Remove some workers from the first journal");
+                            Console.WriteLine("2. Remove some workers from the second journal");
+                            Console.WriteLine("0. Exit");
+                            Console.Write("Your choice: ");
+                            string? WorkersInput = Console.ReadLine();
 
-                                if (journal != null && value > 0)
+                            if (int.TryParse(WorkersInput, out int workersChoice))
+                            {
+                                if (workersChoice == 0)
                                 {
-                                    journal -= value;
-                                    Console.WriteLine($"\nRemoved {value} workers from the first journal!");
+                                    Console.WriteLine("\nExitting..");
+                                    break;
+                                }
+                                else if (workersChoice == 1)
+                                {
+                                    int value = IntInput("Enter a number: ");
+
+                                    if (journal != null && value > 0)
+                                    {
+                                        journal -= value;
+                                        Console.WriteLine($"\nRemoved {value} workers from the first journal!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nJournal is null or value is less than 0! Cannot Remove!");
+                                    }
+                                }
+                                else if (workersChoice == 2)
+                                {
+                                    int value = IntInput("Enter a number: ");
+
+                                    if (otherJournal != null && value > 0)
+                                    {
+                                        otherJournal -= value;
+                                        Console.WriteLine($"\nRemoved {value} workers from the second journal!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nJournal is null or value is less than 0! Cannot Remove!");
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("\nJournal is null or value is less than 0! Cannot Remove!");
-                                }
-                            }
-                            else if (workersChoice == 2)
-                            {
-                                int value = IntInput("Enter a number: ");
-
-                                if (otherJournal != null && value > 0)
-                                {
-                                    otherJournal -= value;
-                                    Console.WriteLine($"\nRemoved {value} workers from the second journal!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\nJournal is null or value is less than 0! Cannot Remove!");
+                                    Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
+                                Console.WriteLine("\nInvalid input! Enter a number!");
                             }
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nInvalid input! Enter a number!");
                         }
                     }
-                }
-                else if (userChoice == 5)
-                {
-                    while (true)
+                    else if (userChoice == 5)
                     {
-                        Console.WriteLine("\n1. Check if amount of workers of both journals are equal");
-                        Console.WriteLine("2. Check if amount of workers of both journals are not equal");
-                        Console.WriteLine("0. Exit");
-                        Console.Write("Your choice: ");
-                        string? WorkersInput = Console.ReadLine();
-
-                        if (int.TryParse(WorkersInput, out int workersChoice))
+                        while (true)
                         {
-                            if (workersChoice == 0)
+                            Console.WriteLine("\n1. Check if amount of workers of both journals are equal");
+                            Console.WriteLine("2. Check if amount of workers of both journals are not equal");
+                            Console.WriteLine("0. Exit");
+                            Console.Write("Your choice: ");
+                            string? WorkersInput = Console.ReadLine();
+
+                            if (int.TryParse(WorkersInput, out int workersChoice))
                             {
-                                Console.WriteLine("\nExitting..");
-                                break;
-                            }
-                            else if (workersChoice == 1)
-                            {
-                                if (journal != null && otherJournal != null)
+                                if (workersChoice == 0)
                                 {
-                                    Console.Write($"\nBoth journals are equal: ");
-                                    Console.WriteLine(journal == otherJournal);
+                                    Console.WriteLine("\nExitting..");
+                                    break;
+                                }
+                                else if (workersChoice == 1)
+                                {
+                                    if (journal != null && otherJournal != null)
+                                    {
+                                        Console.Write($"\nBoth journals are equal: ");
+                                        Console.WriteLine(journal == otherJournal);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nOne or both journals are null! Cannot check!");
+                                    }
+                                }
+                                else if (workersChoice == 2)
+                                {
+                                    if (journal != null && otherJournal != null)
+                                    {
+                                        Console.Write($"\nBoth journals are not equal: ");
+                                        Console.WriteLine(journal != otherJournal);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nOne or both journals are null! Cannot check!");
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("\nOne or both journals are null! Cannot check!");
-                                }
-                            }
-                            else if (workersChoice == 2)
-                            {
-                                if (journal != null && otherJournal != null)
-                                {
-                                    Console.Write($"\nBoth journals are not equal: ");
-                                    Console.WriteLine(journal != otherJournal);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\nOne or both journals are null! Cannot check!");
+                                    Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
+                                Console.WriteLine("\nInvalid input! Enter a number!");
                             }
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nInvalid input! Enter a number!");
                         }
                     }
-                }
-                else if (userChoice == 6)
-                {
-                    while (true)
+                    else if (userChoice == 6)
                     {
-                        Console.WriteLine("\n1. Compare first journal to the second");
-                        Console.WriteLine("2. Compare second journal to the first");
-                        Console.WriteLine("0. Exit");
-                        Console.Write("Your choice: ");
-                        string? WorkersInput = Console.ReadLine();
-
-                        if (int.TryParse(WorkersInput, out int workersChoice))
+                        while (true)
                         {
-                            if (workersChoice == 0)
+                            Console.WriteLine("\n1. Compare first journal to the second");
+                            Console.WriteLine("2. Compare second journal to the first");
+                            Console.WriteLine("0. Exit");
+                            Console.Write("Your choice: ");
+                            string? WorkersInput = Console.ReadLine();
+
+                            if (int.TryParse(WorkersInput, out int workersChoice))
                             {
-                                Console.WriteLine("\nExitting..");
-                                break;
-                            }
-                            else if (workersChoice == 1)
-                            {
-                                if (journal != null && otherJournal != null)
+                                if (workersChoice == 0)
                                 {
-                                    Console.Write($"\nFirst journal is bigger than second: ");
-                                    Console.WriteLine(journal > otherJournal);
+                                    Console.WriteLine("\nExitting..");
+                                    break;
+                                }
+                                else if (workersChoice == 1)
+                                {
+                                    if (journal != null && otherJournal != null)
+                                    {
+                                        Console.Write($"\nFirst journal is bigger than second: ");
+                                        Console.WriteLine(journal > otherJournal);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nOne or both journals are null! Cannot check!");
+                                    }
+                                }
+                                else if (workersChoice == 2)
+                                {
+                                    if (journal != null && otherJournal != null)
+                                    {
+                                        Console.Write($"\nSecond journal is bigger than first: ");
+                                        Console.WriteLine(journal < otherJournal);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("\nOne or both journals are null! Cannot check!");
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("\nOne or both journals are null! Cannot check!");
-                                }
-                            }
-                            else if (workersChoice == 2)
-                            {
-                                if (journal != null && otherJournal != null)
-                                {
-                                    Console.Write($"\nSecond journal is bigger than first: ");
-                                    Console.WriteLine(journal < otherJournal);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\nOne or both journals are null! Cannot check!");
+                                    Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("\nInvalid choice! Enter a number between 0-2!");
+                                Console.WriteLine("\nInvalid input! Enter a number!");
                             }
+                        }
+                    }
+                    else if (userChoice == 7)
+                    {
+                        if (journal != null)
+                        {
+                            Console.WriteLine($"\nFirst journal info:\n{journal.Output()}");
                         }
                         else
                         {
-                            Console.WriteLine("\nInvalid input! Enter a number!");
+                            Console.WriteLine("\nFirst journal is null! Cannot output!");
                         }
-                    }
-                }
-                else if (userChoice == 7)
-                {
-                    if (journal != null)
-                    {
-                        Console.WriteLine($"\nFirst journal info:\n{journal.Output()}");
+
+                        if (otherJournal != null)
+                        {
+                            Console.WriteLine($"\nSecond journal info:\n{otherJournal.Output()}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nSecond journal is null! Cannot output!");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("\nFirst journal is null! Cannot output!");
-                    }
-
-                    if (otherJournal != null)
-                    {
-                        Console.WriteLine($"\nSecond journal info:\n{otherJournal.Output()}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nSecond journal is null! Cannot output!");
+                        Console.WriteLine("\nInvalid choice! Enter a number between 0-7!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("\nInvalid choice! Enter a number between 0-7!");
+                    Console.WriteLine("\nInvalid input! Enter a number!");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("\nInvalid input! Enter a number!");
+                Console.WriteLine($"\nError: {ex}");
+                return;
             }
         }
     }

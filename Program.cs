@@ -9,6 +9,7 @@ class Program
             Console.WriteLine("\nChoose task: \n");
             Console.WriteLine("1. Journal");
             Console.WriteLine("2. Shop");
+            Console.WriteLine("3. Book");
             Console.WriteLine("0. Exit");
             Console.Write("Your choice: ");
             string? input = Console.ReadLine();
@@ -26,7 +27,11 @@ class Program
                 }
                 else if (userChoice == 2)
                 {
-
+                    ShopTask.Menu.Run();
+                }
+                else if (userChoice == 3)
+                {
+                    BookTask.Menu.Run();
                 }
                 else
                 {
