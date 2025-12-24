@@ -10,6 +10,9 @@ class Program
             Console.WriteLine("1. Journal");
             Console.WriteLine("2. Shop");
             Console.WriteLine("3. Book");
+            Console.WriteLine("4. Temperature");
+            Console.WriteLine("5. Fraction");
+            Console.WriteLine("6. Product");
             Console.WriteLine("0. Exit");
             Console.Write("Your choice: ");
             string? input = Console.ReadLine();
@@ -33,9 +36,21 @@ class Program
                 {
                     BookTask.Menu.Run();
                 }
+                else if (userChoice == 4)
+                {
+                    TemperatureTask.Menu.Run();
+                }
+                else if (userChoice == 5)
+                {
+                    FractionTask.Menu.Run();
+                }
+                else if (userChoice == 6)
+                {
+                    ProductTask.Menu.Run();
+                }
                 else
                 {
-                    Console.WriteLine("\nInvalid choice! Enter a number between !");
+                    Console.WriteLine("\nInvalid choice! Enter a number between 0-6!");
                 }
             }
             else

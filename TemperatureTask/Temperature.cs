@@ -88,4 +88,15 @@ class Temperature
         return (Monday + Tuesday + Wednesday + Thursday +
             Friday + Saturday + Sunday) / 7;
     }
+
+    public void ShowAll()
+    {
+        Console.WriteLine($"Monday: {Monday}");
+        Console.WriteLine($"Tuesday: {Tuesday}");
+        Console.WriteLine($"Wednesday: {Wednesday}");
+        Console.WriteLine($"Thursday: {Thursday}");
+        Console.WriteLine($"Friday: {Friday}");
+        Console.WriteLine($"Saturday: {Saturday}");
+        Console.WriteLine($"Sunday: {Sunday}");
+    }
 }
